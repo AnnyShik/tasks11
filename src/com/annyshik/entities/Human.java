@@ -40,24 +40,25 @@ public class Human{
 
     @Override
     public String toString() {
-        return "Human: " + name +
-                " " + surName +
-                " " + patronymic ;
+        return surName +
+               " " + name +
+               " " + patronymic ;
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Human human = (Human) o;
-        return Objects.equals(name, human.name) &&
+    public boolean equals(Object obj) {
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        Human human = (Human) obj;
+        return
                Objects.equals(surName, human.surName) &&
-               Objects.equals(patronymic, human.patronymic);
+                Objects.equals(name, human.name) &&
+                       Objects.equals(patronymic, human.patronymic);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, surName, patronymic);
+        return Objects.hash(surName, name, patronymic);
     }
 
 }
