@@ -2,17 +2,20 @@ package com.annyshik.entities;
 
 import java.util.Objects;
 
-public class Human{
+public class Human {
 
-    public String name;
-    public String surName;
-    public String patronymic;
+    private String surName;
+    private String name;
+    //это состояния объекта
+   // private String name;
+    private String patronymic;
 
-    public Human(String name, String surName, String patronymic) {
-        this.name = name;
+    public Human(String surName,String name,  String patronymic) {
         this.surName = surName;
+        this.name = name;
         this.patronymic = patronymic;
     }
+
     public String getName() {
         return name;
     }
@@ -41,20 +44,29 @@ public class Human{
     @Override
     public String toString() {
         return surName +
-               " " + name +
-               " " + patronymic ;
+                " " + name +
+                " " + patronymic;
     }
 
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
+        if (this == obj)
+            return true;
+        // if (obj == null || getClass() != obj.getClass()) мой
+        if (obj == null || obj.getClass() != this.getClass())
+
+            return false;
         Human human = (Human) obj;
         return
-               Objects.equals(surName, human.surName) &&
-                Objects.equals(name, human.name) &&
-                       Objects.equals(patronymic, human.patronymic);
+//               Objects.equals(surName, human.surName) && мой
+//                Objects.equals(name, human.name) &&
+//                       Objects.equals(patronymic, human.patronymic);
+
+                Objects.equals(this.surName, human.surName) &&
+                Objects.equals(this.name, human.name) &&
+                Objects.equals(this.patronymic, human.patronymic);
     }
+
 
     @Override
     public int hashCode() {

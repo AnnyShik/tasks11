@@ -3,28 +3,27 @@ package com.annyshik.services;
 import com.annyshik.entities.Human;
 import com.annyshik.utils.HumanList;
 
-import java.util.Scanner;
 
 public class HumanService {
-    private HumanList humans = new HumanList();
+    private HumanList humanList = new HumanList();
 
-    public void addHuman(HumanList h) {
-        humans.add(h);
+    public void addHuman(Human human) {
+        humanList.addHuman(human);
     }
 
-    public void addHumans(HumanList list) {
-        for (int i = 0; i < list.size(); i++) {
-            humans.add(list.get(i));
-        }
-    }
-//    public void deleteHuman(Human h) {
-//        humans.delete(h);
-//    }
-//
-//    public void deleteHuman(HumanList list) {
-//        for (int i = 0; i < list.size(); i++) {
-//            humans.delete(list.get(i));
-//        }
-//    }
 
+    public void delHuman(Human human) {
+        humanList.delHuman(human);
+    }
+    //вызв делит
+
+
+
+    public void showList(Human human) {
+        humanList.showList(human);
+    }
+
+    public void getFirstOfLastNameList(Human human) {
+        humanList.getFirstOfLastNameList(human);
+    }
 }

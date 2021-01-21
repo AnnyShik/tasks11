@@ -3,48 +3,78 @@ package com.annyshik.utils;
 import com.annyshik.entities.Human;
 
 import java.util.Arrays;
-import java.util.Scanner;
 
 public class HumanList {
 
-    private Human[] humans = new Human[0];
+    public static HumanList readHumans;
+    private Human[] humanList = new Human[0];
 
-    public void add(Human h) {
-        humans = Arrays.copyOf(humans, humans.length + 1);
-        humans[humans.length - 1] = h;
+    //если меняем данные то войд (меняется поле/состояние объекта например private String name;
+    public void add(Human human) {
+        if (isHumanExist(human)) {
+            System.out.println("");
+            return; //выход из метода
+        }
+        humanList = Arrays.copyOf(humanList, humanList.length + 1);
+        humanList[humanList.length - 1] = human;
     }
 
-//    public void delete(Human h) {
-//        humans = Arrays.copyOf(humans, humans.length - 1);
-//        humans[humans.length - 1] = h;
-//    }
+    public void addHuman(Human human) {
+//добавить из лекции артура
+    }
 
-    public HumanList readHumans(int index, Scanner sc){ ///1:11:00 0:55:00
-        HumanList humans = new HumanList();
-        for (int i = 0; i < index; i++) {
-            System.out.println("Введите ФИО нового человека: ");
-            System.out.println("Фамилия: ");
-            String surName = sc.nextLine();
-            System.out.println("Имя: ");
-            String name = sc.nextLine();
-            System.out.println("Отчество: ");
-            String patronymic = sc.nextLine();
 
-            Human newHum = new Human(surName, name, patronymic);
-            humans.add(newHum);
+    public boolean isHumanExist(Human human) {
+        //elem хранит Human
+        for (Human elem : humanList) {
+            if (elem.equals(human)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    //печатает фио
+    public void showList(Human human) {
+        for (Human showHuman : humanList) {
+            System.out.println(showHuman.toString());
         }
     }
 
+    public Human[] delHuman(Human numDelete) {
+        Human humanDelList[] = Arrays.copyOf(humanList, humanList.length - 1);
+        for (int i = 0, k = 0; i < humanList.length; i++) {
+            humanDelList[k++] = humanList[i];
+        }
+        return humanDelList;
+    }
+
+
+
+    /*** поиск человека по имени и фамилии
+     * @param fullNamePart*/
+    public HumanList getFirstOfLastNameList(Human fullNamePart) {
+        HumanList temporal = new HumanList();
+
+        for (Human elem : humanList) {
+            if (fullNamePart.equals(elem.getName()) || fullNamePart.equals(elem.getSurName())) {
+                temporal.add(elem);
+            }
+        }
+        return temporal;
+    }
+
+
     public Human get(int index) {
-        return humans[index];
+        return humanList[index];
     }
 
     public void set(int index, Human value) {
-        humans[index] = value;
+        humanList[index] = value;
     }
 
     public int size() {
-        return humans.length;
+        return humanList.length;
     }
 
 
