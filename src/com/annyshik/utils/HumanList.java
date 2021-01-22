@@ -1,7 +1,5 @@
 package com.annyshik.utils;
-
 import com.annyshik.entities.Human;
-
 import java.util.Arrays;
 
 public class HumanList {
@@ -9,20 +7,14 @@ public class HumanList {
     public static HumanList readHumans;
     private Human[] humanList = new Human[0];
 
-    //если меняем данные то войд (меняется поле/состояние объекта например private String name;
-    public void add(Human human) {
+    public Human add(Human human) {
         if (isHumanExist(human)) {
             System.out.println("");
-            return; //выход из метода
+            return human;
         }
         humanList = Arrays.copyOf(humanList, humanList.length + 1);
-        humanList[humanList.length - 1] = human;
+       return humanList[humanList.length - 1] = human;
     }
-
-    public void addHuman(Human human) {
-//добавить из лекции артура
-    }
-
 
     public boolean isHumanExist(Human human) {
         //elem хранит Human
@@ -41,7 +33,7 @@ public class HumanList {
         }
     }
 
-    public Human[] delHuman(Human numDelete) {
+    public Human[] delHuman(int numDelete) {
         Human humanDelList[] = Arrays.copyOf(humanList, humanList.length - 1);
         for (int i = 0, k = 0; i < humanList.length; i++) {
             humanDelList[k++] = humanList[i];

@@ -1,14 +1,16 @@
 package com.annyshik.UI;
-
 import com.annyshik.controller.HumanController;
 import com.annyshik.entities.Human;
 
 import java.util.Scanner;
 
 public class HumanUI {
-    private Scanner sc = new Scanner(System.in);
-    private HumanController humanController = new HumanController();
+    public HumanUI(Scanner sc) {
+        this.sc = sc;
+    }
 
+    private Scanner sc;
+    private HumanController humanController = new HumanController();
 
     static Human[] humans = {
             new Human("Андреев", "Андрей", "Андреич"),
@@ -56,30 +58,31 @@ public class HumanUI {
         return null;
     }
 
+    public Human showHumanAfterAdd() {
+
+        return null;
+    }
+
     public void chooseActionByResponse() {
         int resp = sc.nextInt();
         sc.nextLine();
-        if
-        (resp == 1) {
+        if (resp == 1) {
             Human newHuman = returnHuman();
             humanController.addHuman(newHuman);
-        } else if
-        (resp == 2) {
+        } else if (resp == 2) {
             Human showHuman = showHuman();
             humanController.showList(showHuman);
         } else if (resp == 3) {
             int deleteHuman = deleteHuman();
-            //         humanController.delHuman(deleteHuman);
-            //ИСПРАВИТЬ
-        } else if
-        (resp == 4) {
+            humanController.delHuman(deleteHuman);
+        } else if (resp == 4) {
             Human searchName = searchHumanName();
             humanController.getFirstOfLastNameList(searchName);
-        } else if
-        (resp == 5) {
+        } else if (resp == 5) {
             Human searchName = searchHumanSurName();
-            humanController.getFirstOfLastNameList(searchName);}
-        else ;
+            humanController.getFirstOfLastNameList(searchName);
+        } else ;
+
     }
 
     public Human searchHumanName() {
@@ -96,23 +99,6 @@ public class HumanUI {
         if (!isFound) System.out.println("Пользователь не найден");
         return null;
     }
-
-
-//    /*** поиск человека по имени */
-//    public Human searchHumanName() {
-//        System.out.print("Введите Имя : ");
-//        String name = null;
-//        name = sc.nextLine();
-//        boolean isFound = false;
-//        for (Human human : humans) {
-//            if (name.equals(human.getName())) {
-//                isFound = true;
-//                System.out.println("Найден " + name);
-//            }
-//        }
-//        if (!isFound) System.out.println("Пользователь не найден");
-//        return null;
-//    }
 
     /*** поиск человека по фамилии */
     public Human searchHumanSurName() {

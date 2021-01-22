@@ -7,7 +7,6 @@ public class Human {
     private String surName;
     private String name;
     //это состояния объекта
-   // private String name;
     private String patronymic;
 
     public Human(String surName,String name,  String patronymic) {
@@ -40,7 +39,6 @@ public class Human {
         this.patronymic = patronymic;
     }
 
-
     @Override
     public String toString() {
         return surName +
@@ -52,21 +50,15 @@ public class Human {
     public boolean equals(Object obj) {
         if (this == obj)
             return true;
-        // if (obj == null || getClass() != obj.getClass()) мой
         if (obj == null || obj.getClass() != this.getClass())
 
             return false;
         Human human = (Human) obj;
         return
-//               Objects.equals(surName, human.surName) && мой
-//                Objects.equals(name, human.name) &&
-//                       Objects.equals(patronymic, human.patronymic);
-
                 Objects.equals(this.surName, human.surName) &&
                 Objects.equals(this.name, human.name) &&
                 Objects.equals(this.patronymic, human.patronymic);
     }
-
 
     @Override
     public int hashCode() {
